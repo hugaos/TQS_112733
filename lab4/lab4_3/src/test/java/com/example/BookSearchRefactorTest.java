@@ -20,13 +20,8 @@ public class BookSearchRefactorTest {
 
     @BeforeEach
     public void setUp() {
-        // Definir o caminho do perfil do Firefox
-        String profilePath = "/home/hugao/snap/firefox/common/.mozilla/firefox/25a5bclp.selenium";
-
-        // Configurar o Firefox com o perfil específico
+        // Configurar o Firefox sem perfil específico
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("-profile", profilePath);
-
         driver = new FirefoxDriver(options);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));

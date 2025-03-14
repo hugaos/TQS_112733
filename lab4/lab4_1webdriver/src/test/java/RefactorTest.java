@@ -9,7 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.firefox.FirefoxProfile;
 
 import io.github.bonigarcia.seljup.SeleniumJupiter;
 import org.slf4j.Logger;
@@ -20,12 +19,9 @@ public class RefactorTest {
     static final Logger log = getLogger(lookup().lookupClass());
 
     @Test
-    void testNavigationToSlowCalculator(FirefoxOptions options) { 
-        String profilePath = "/home/hugao/snap/firefox/common/.mozilla/firefox/25a5bclp.selenium"; 
-        options.addArguments("-profile", profilePath);
-
-        // Criar o WebDriver com o perfil correto
-        WebDriver driver = new org.openqa.selenium.firefox.FirefoxDriver(options);
+    void testNavigationToSlowCalculator() { 
+        FirefoxOptions options = new FirefoxOptions();
+        WebDriver driver = new FirefoxDriver(options);
         String sutUrl = "https://bonigarcia.dev/selenium-webdriver-java/";
         driver.get(sutUrl);
         log.debug("Pagina inicial", driver.getCurrentUrl());

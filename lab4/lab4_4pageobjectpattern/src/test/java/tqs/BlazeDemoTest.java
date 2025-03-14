@@ -20,11 +20,9 @@ public class BlazeDemoTest {
     @Test
     @DisplayName("Test Flight Purchase")
     void testFlightPurchase() {
-        String profilePath = "/home/hugao/snap/firefox/common/.mozilla/firefox/25a5bclp.selenium";
         
         // 🔹 Configurar o Firefox com o perfil específico
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("-profile", profilePath);
         
         // 🔹 Criar o driver com as opções configuradas
         FirefoxDriver driver = new FirefoxDriver(options);

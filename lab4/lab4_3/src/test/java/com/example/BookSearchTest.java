@@ -6,29 +6,22 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.AfterEach;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
+
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
-import java.util.List;
 @Disabled
 public class BookSearchTest {
     private WebDriver driver;
-    private WebDriverWait wait;
     @BeforeEach
     public void setUp() {
         // Definir o caminho do perfil do Firefox
-        String profilePath = "/home/hugao/snap/firefox/common/.mozilla/firefox/25a5bclp.selenium";
 
         // Configurar o Firefox com o perfil específico
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("-profile", profilePath);
 
         driver = new FirefoxDriver(options);
         driver.manage().window().maximize();

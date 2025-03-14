@@ -27,18 +27,10 @@ class HelloWorldFirefoxJupiterTest {
 
     @BeforeEach
     void setup() {
-        // Caminho correto do perfil dentro do Snap
-        // Estou a usar isto para nao ter de desinstalar e voltar a instalar o firefox,
-        // portanto poderá nao funcionar para outros ambientes
-        
-        String profilePath = "/home/hugao/snap/firefox/common/.mozilla/firefox/25a5bclp.selenium";
-
+        // Configuração genérica do Firefox sem perfil específico
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("-profile", profilePath);
-
         driver = new FirefoxDriver(options);
     }
-
 
     @Test
     void test() {

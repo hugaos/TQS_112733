@@ -1,34 +1,25 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.*;
 
 public class Test1Test {
   private WebDriver driver;
-  private Map<String, Object> vars;
   JavascriptExecutor js;
 
   @BeforeEach
-    public void setUp() {
-        // Definir o caminho do perfil do Firefox
-        String profilePath = "/home/hugao/snap/firefox/common/.mozilla/firefox/25a5bclp.selenium";
-        
-        // Configurar o Firefox com o perfil específico
-        FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("-profile", profilePath);
-
-        driver = new FirefoxDriver(options);
-        js = (JavascriptExecutor) driver;
-        vars = new HashMap<>();
-    }
+  public void setUp() {
+    // Configurar o Firefox sem perfil específico
+    FirefoxOptions options = new FirefoxOptions();
+    driver = new FirefoxDriver(options);
+    js = (JavascriptExecutor) driver;
+  }
 
   @AfterEach
   public void tearDown() {
