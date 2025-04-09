@@ -39,18 +39,15 @@ public class MealControllerTest {
 
     @Test
     public void testGetMealById() throws Exception {
-        // Defina o comportamento do mock para o método getById
         Meal meal = new Meal("Bacalhau com Natas", LocalDate.of(2025, 4, 8), 1L);
         when(mealService.getById(1L)).thenReturn(meal);
 
-        // Perform a GET request and check the response
         mockMvc.perform(get("/api/meals/1"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name").value("Bacalhau com Natas"))
                 .andExpect(jsonPath("$.date").value("2025-04-08"))
                 .andExpect(jsonPath("$.restaurantId").value(1L));
 
-        // Verifica se o método do serviço foi chamado
         verify(mealService, times(1)).getById(1L);
     }
     @Test

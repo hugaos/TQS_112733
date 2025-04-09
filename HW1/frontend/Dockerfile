@@ -1,20 +1,19 @@
-# Step 1: Use a node image to build the frontend
-FROM node:18 AS build
+# Step 1: Use Node.js base image
+FROM node:18-alpine
 
+# Step 2: Set working directory
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-
+# Step 3: Copy package.json and install dependencies
+COPY package*.json ./
 RUN npm install
 
+# Step 4: Copy the rest of the app
 COPY . .
 
-RUN npm run build
+# Step 5: Expose default port
+EXPOSE 3000
 
-FROM nginx:alpine
+# Step 6: Start the dev server
+CMD ["npm", "start"]
 
-COPY --from=build /app/build /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]

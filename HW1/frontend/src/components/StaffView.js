@@ -11,7 +11,7 @@ function StaffView() {
   const [restaurantNames, setRestaurantNames] = useState({}); // Armazenar os nomes dos restaurantes
 
   // Carregar todas as reservas
-  useEffect(() => {
+ useEffect(() => {
     const fetchReservations = async () => {
       try {
         const response = await fetch('http://localhost:8080/api/reservations');
@@ -19,7 +19,6 @@ function StaffView() {
         setAllReservations(data);
         setFilteredReservations(data);
 
-        // Para cada reserva, buscar as informações do meal associado
         for (const reservation of data) {
           await fetchMealDetails(reservation.mealId);
         }
@@ -31,7 +30,9 @@ function StaffView() {
     };
 
     fetchReservations();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
 
   // Buscar detalhes do meal
   const fetchMealDetails = async (mealId) => {
@@ -43,8 +44,7 @@ function StaffView() {
         ...prevState,
         [mealId]: data
       }));
-      // Agora que os detalhes do meal foram carregados, podemos buscar o nome do restaurante
-      await fetchRestaurantName(data.restaurantId); // Passar o restaurantId para pegar o nome
+      await fetchRestaurantName(data.restaurantId); 
     } catch (error) {
       console.error("Erro ao buscar detalhes da refeição:", error);
     }
