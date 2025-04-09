@@ -46,7 +46,7 @@ public class MarkAsUsedTest {
     driver.manage().window().setSize(new Dimension(1920, 1053));
     driver.findElement(By.cssSelector(".meal-card-horizontal:nth-child(3) .reserve-btn")).click();
     driver.findElement(By.cssSelector(".view-toggle")).click();
-    driver.findElement(By.cssSelector(".reservation-item:nth-child(2) > .reservation-meal")).click();
+    driver.findElement(By.cssSelector(".reservation-item:nth-child(1) > .reservation-meal")).click();
     driver.findElement(By.cssSelector(".verify-btn")).click();
     assertThat(driver.switchTo().alert().getText(), is("Reserva marcada como utilizada!"));
   }
